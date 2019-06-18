@@ -1,0 +1,14 @@
+.bg-primary{background:#6a47a3!important}
+.bg-white{background-color: rgba(255,255,255,0.8)!important;}
+.form-control{border-radius:0px;border:1px solid #ccc;}
+
+.bg-full{
+  background: url(../../../assets/img/loginbg.jpg);
+  height:100%;
+  background-size: cover;
+  background-position:center center;
+  background-repeat: no-repeat;
+  margin:0px;
+  top:0px;
+  padding:0px;
+}

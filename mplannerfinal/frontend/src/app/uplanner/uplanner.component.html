@@ -1,0 +1,146 @@
+<div class="col-md-10 mx-auto mt-5">
+<div class="row text-center">
+  <div class="col-md-4 text-left">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
+        [class.active]="view === CalendarView.Month"
+        (click)="setView(CalendarView.Month)"
+        >Month</div>
+      <div
+        class="btn btn-primary"
+        [class.active]="view === CalendarView.Week"
+        (click)="setView(CalendarView.Week)">Week</div>
+      <div
+        class="btn btn-primary"
+        [class.active]="view === CalendarView.Day"
+        (click)="setView(CalendarView.Day)"> Day </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle') }}</h3>
+  </div>
+  <div class="col-md-4 text-right">
+    <div class="btn-group">
+      <button
+        class="btn btn-primary"
+         (click)="viewdecrement()"
+         [disabled]="prevBtn"
+        ><i class="fa fa-angle-left"></i></button>
+      <div
+        class="btn btn-outline-secondary"
+        mwlCalendarToday
+        [(viewDate)]="viewDate"
+      >
+        Today
+      </div>
+      <button
+        class="btn btn-primary"
+        (click)="viewincrement()"
+        [disabled]="nextBtn"
+      >
+      <i class="fa fa-angle-right"></i>
+    </button>
+    </div>
+    <button *ngIf="roleedit" class="btn btn-primary pull-right ml-2 mr-2" (click)="handleAddEvent('Add')">
+      Add new
+    </button>
+  </div>
+</div>
+<br />
+<ng-template #loading>
+  <div class="text-center">
+    <i class="fa fa-spin fa-spinner fa-5x"></i> <br />
+    Loading events...
+  </div>
+</ng-template>
+<div class="col-md-12 mx-auto">
+<div *ngIf="events | async; else loading; let t_events">
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="t_events"
+      [refresh]="refresh"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="t_events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="t_events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-day-view>
+  </div>
+</div>
+</div>
+<!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
+<br /><br /><br />
+<div class="col-md-12" *ngIf="roleedit">
+ <ng-template #modalContent let-close="close">
+    <div class="modal-header">
+      <h5 *ngIf="isAdd" class="modal-title">Add</h5>
+      <h5 *ngIf="isEdit" class="modal-title">Edit</h5>
+      <button type="button" class="close" (click)="closeDialog()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+
+          <div class="row form-group">
+          <label class="col-md-2">Purpose</label>
+          <input type="text" [(ngModel)]="data.purpose" class="form-control col-md-6" id="Purpose" placeholder="Meeting...">
+          </div>
+
+
+            <div class="row form-group">
+            <label class="col-md-2">Place</label>
+            <input type="text" [(ngModel)]="data.place" class="form-control col-md-6" id="Place" placeholder="Meeting Room...">
+          </div>
+
+
+            <div class="row form-group">
+            <label class="col-md-2">When</label>
+            <div class="col-md-4 input-group text-left">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" [maxDate]="maxDatePicker" [minDate]="minDatePicker"
+              ngbDatepicker #d="ngbDatepicker">
+            <div class="">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+            </div>
+            </div>
+            <div class="col-md-3">
+                <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
+            </div>
+          </div>
+
+
+      <div class="modal-footer">
+        <button *ngIf="isAdd" type="button" class="btn btn-outline-secondary" (click)="addEvent()">
+          Create
+        </button>
+        <button *ngIf="isEdit" type="button" class="btn btn-outline-secondary" (click)="saveEvent(eventToServer)">
+          Update
+        </button>
+        <!-- <button *ngIf="isDelete" type="button" class="btn btn-outline-secondary" (click)="deleteEvent(eventToServer)">
+          Delete
+        </button> -->
+      </div>
+    </div>
+  </ng-template>

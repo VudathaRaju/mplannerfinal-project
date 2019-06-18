@@ -1,0 +1,31 @@
+<button class="hide" data-toggle="modal" data-target="#myModal" #openBtn></button>
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{event?.title}}</h4>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <span *ngIf="count === 3" class="modal-title">
+          <!--Event Time "{{event?.start | date : 'medium'}}"-->
+        </span>
+        <span class="modal-title">
+            Event Time "{{event?.start | date : 'medium'}}"
+         <!--Do you want to add the Snooze of 10 secs ?-->
+        </span>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+        <button *ngIf="count < 3" (click)="addSnooze()" class="btn btn-info"
+          data-dismiss="modal"> Add Snooze (after 5 sec)</button>
+      </div>
+    </div>
+  </div>
+</div>

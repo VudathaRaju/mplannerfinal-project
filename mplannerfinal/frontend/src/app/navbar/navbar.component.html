@@ -1,0 +1,20 @@
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
+<nav class="navbar navbar-light navbar-expand-md bg-light" *ngIf="currentUser">
+  <a class="navbar-brand" href="">
+        <img src="../../../assets/img/mplannerlogo.png" id="icon" alt="User Icon" width="200" />
+  </a>
+  <button class="navbar-toggler" type="button" (click) = "toggleResMenu()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+ <div class="collapse navbar-collapse navbar-nav show right" [ngClass]="{ 'show' : navBarOpen }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" >
+        <a class="nav-item ml-2 nav-link" (click)="logout()">Logout</a>
+      </li>
+      <li class="nav-item">
+        Logged In As {{ currentUser.fname }} {{ currentUser.lname }}
+    </li>
+    </ul>
+  </div>
+
+</nav>

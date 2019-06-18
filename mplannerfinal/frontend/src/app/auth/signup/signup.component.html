@@ -1,0 +1,78 @@
+<div class="bg-full pt-4">
+<div class=" mx-auto border col-md-6 pt-5 pb-5 shadow p-3 mb-5 bg-white rounded text-center">
+        <a class="navbar-brand" href="">
+            <img src="../../../assets/img/mplannerlogo.png" id="icon" alt="User Icon" width="200" />
+        </a>
+         <div class=" border-0  pt-3">
+          <div class=" text-center">
+            <div class="col-md-12 pt-3">
+              <div class="form-container">
+                <form [formGroup]="signupFormGrp" (validSubmit) = "onSubmit()" >
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" id="fname" value="" class="form-control"
+                            placeholder="First Name" formControlName="FirstName">
+                          </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" id="lname" value="" class="form-control"
+                            placeholder="Last Name" formControlName="LastName">
+                          </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="email" id="email" value="" class="form-control"
+                        placeholder="User Email" formControlName="Email">
+                        </div>
+                    </div>
+                  </div>
+                 <div class="row">
+                      <div class="col-md-3">
+                          <div class="form-group" >
+                            <select name="countryCode" ng-model="selectedCountry"  class="form-control">
+                                <option value="0">Select Country code</option>
+                                <option [ngValue]="k" *ngFor="let k of items">
+                                  {{k}}
+                                </option>
+                            </select>
+                          </div>
+                        </div>
+                      <div class="col-md-9">
+                          <div class="form-group" >
+                              <input type="phone" id="phone" value="" class="form-control"
+                              placeholder="Phone" formControlName="Phone">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" id="username" value="" class="form-control"
+                            placeholder="User Name" formControlName="Username">
+                          </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="password" value="" name="password" placeholder="User Password"
+                             class="form-control" formControlName="Password">
+                        </div>
+                    </div>
+                  </div>
+                    <div class="form-group text-center">
+                      <button type="submit" class="btn btn-primary btn-primary">Signup</button>
+                      <div class="mt-5">
+                          Already Signed In? <a routerLink="/login" class="">Login</a>
+                      </div>
+                    </div>
+                </form>
+              </div>
+          </div>
+        </div>
+  </div>
+
+</div>
+</div>

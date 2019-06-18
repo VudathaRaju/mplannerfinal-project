@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+body,html{height:100%}
+body{
+
+}
+.cal-event{background-color:#fff!important}
+.cal-month-view .cal-open-day-events{background-color: #795aac!important;}
+.cal-month-view .cal-open-day-events a{color: #fff!important;}
+.cal-month-view .cal-day-badge{background-color: #795aac;}
+.ng-star-inserted.cal-event{background-color:rgb(158, 71, 163)!important;}

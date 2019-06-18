@@ -1,0 +1,31 @@
+<div class="mx-auto col-md-12 pt-5 bg-white fullheight" >
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <h3> All Users </h3>
+  <table striped="true" class="table table-striped">
+    <thead>
+      <tr>
+
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Countrycode</th>
+        <th>Phone</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{ user.fname }}</td>
+            <td>{{ user.lname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.countrycode }}</td>
+            <td>{{ user.phone }}</td>
+            <td><a [routerLink]="['/uplanner', user.id]"><i class="fa fa-calendar"></i></a></td>
+        </tr>
+
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
