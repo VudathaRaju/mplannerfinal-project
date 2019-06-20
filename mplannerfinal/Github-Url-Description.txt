@@ -1,8 +1,9 @@
-Github repository link of Issue tracking tool project :
+Github repository link of Meeting Planner Project :
 <<https://github.com/VudathaRaju/mplannerfinal-project.git>>
 
-URL of the issue tracking tool:
-<<http://mplanner.vudatha.work.s3-website-us-east-1.amazonaws.com>>
+URL of the Meeting Planner:
+<<http://mplanner.vudatha.work>>
+please wait. it will take few seconds to open. 
 
 Description-Assumptions: 
 # Meeting Planner
